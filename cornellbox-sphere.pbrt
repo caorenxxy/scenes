@@ -1,0 +1,96 @@
+LookAt -50 52 295.6   # eye
+       -50 51.9574 294.6    # look at point
+       0 0.999093 -0.0425734    # up vector
+Camera "perspective" "float fov" [ 28.7993 ] 
+Integrator "path" "integer maxdepth" [ 20 ] 
+Sampler "random" "integer pixelsamples" [ 1 ] 
+PixelFilter "box" "float xwidth" [ 0.500000 ] "float ywidth" [ 0.500000 ] 
+Film "image" "integer xresolution" [ 1024 ] "integer yresolution" [ 768 ] "string filename" [ "cornell-box-sphere.png" ] 
+
+WorldBegin
+	MakeNamedMaterial "LeftWall" "string type" [ "matte" ] "rgb Kd" [ 0.75 0.25 0.25 ] 
+	MakeNamedMaterial "RightWall" "string type" [ "matte" ] "rgb Kd" [ 0.25 0.25 0.75 ] 
+	MakeNamedMaterial "Floor" "string type" [ "matte" ] "rgb Kd" [ 0.75 0.75 0.75 ] 
+	MakeNamedMaterial "Ceiling" "string type" [ "matte" ] "rgb Kd" [ 0.75 0.75 0.75 ] 
+	MakeNamedMaterial "FrontWall" "string type" ["matte"] "rgb Kd" [ 0.75 0.75 0.75 ]
+	MakeNamedMaterial "BackWall" "string type" [ "matte" ] "rgb Kd" [ 0.75 0.75 0.75 ] 
+	MakeNamedMaterial "Light" "string type" [ "matte" ] "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+	MakeNamedMaterial "BlueDiffuseBall" "string type" [ "matte" ] "rgb Kd" [ 0.25 0.25 0.75 ]
+	MakeNamedMaterial "GlassBall" "string type" [ "glass" ] "rgb Kr" [ 0.999 0.999 0.999 ] "rgb Kt" [ 0.999 0.999 0.999 ]
+
+	AttributeBegin
+		NamedMaterial "LeftWall" 
+		Translate -100001.0 40.8 81.6
+		Shape "sphere" "float radius" [ 100000.0 ]
+	AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "RightWall" 
+		Translate 99901.0 40.8 81.6
+		Shape "sphere" "float radius" [ 100000.0 ]
+	AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "Ceiling" 
+		Translate -50 -99918.4 81.6
+		Shape "sphere" "float radius" [ 100000.0 ]
+	AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "Floor" 
+		Translate -50 100000.0 81.6
+		Shape "sphere" "float radius" [ 100000.0 ]
+	AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "BackWall" 
+		Translate -50 40.8 100000.0
+		Shape "sphere" "float radius" [ 100000.0 ]
+	AttributeEnd
+
+	#AttributeBegin
+	#	NamedMaterial "FrontWall" 
+	#	Translate -50 40.8 -99830
+	#	Shape "sphere" "float radius" [ 100000.0 ]
+	#AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "GlassBall" 
+		Translate -27 16.5 47
+		Shape "sphere" "float radius" [ 16.5 ]
+	AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "BlueDiffuseBall" 
+		Translate -27 16.5 47
+		Shape "sphere" "float radius" [ 7.0 ]
+	AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "GlassBall" 
+		Translate -73 26.5 78
+		Shape "sphere" "float radius" [ 16.5 ]
+	AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "GlassBall" 
+		Translate -53 9.5 88
+		Shape "sphere" "float radius" [ 9.5 ]
+	AttributeEnd
+
+
+	AttributeBegin
+		NamedMaterial "GlassBall"
+		Translate -50 65.1 81.6 
+		AreaLightSource "diffuse" "rgb L" [ 30.000000 30.000000 30.000000 ] 
+		Shape "sphere" "float radius" [ 8.0 ]
+	AttributeEnd
+WorldEnd
